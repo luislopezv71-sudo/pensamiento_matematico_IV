@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pensamiento Matemático IV - Sistema Gamificado e Ilimitado</title>
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['[', ']']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <!-- Metadata Block -->
+    <!--
+    ==========================================================================
+    SYSTEM / APPLICATION METADATA BLOCK
+    ==========================================================================
+    Project Name     : Modulo Gamificado por Niveles y Generador Aleatorio
+    Module           : Pensamiento Matemático IV
+    Institution      : Universidad William Osler - Bachillerato (Zihuatanejo, Gro.)
+    Author / Developer: L.I. Luis Arturo López Vergara
+    Edition          : 2026
+    File Name        : niveles_y_generador_gamificado.html
+    Description      : Artefacto interactivo dinámico con 3 niveles de dificultad,
+                       cronómetro contrarreloj (< 60s bonus) y generador ilimitado
+                       de ejercicios cuadráticos aleatorios con raíces reales.
+    ==========================================================================
+    -->
+    <style>
+        :root {
+            --primary-color: #004488;
+            --secondary-color: #0077cc;
+            --accent-color: #00a86b;
+            --warning-color: #d97706;
+            --bg-color: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px 30px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header .header-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        header .badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+
+        .dashboard {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .dash-card {
+            flex: 1;
+            min-width: 220px;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .dash-card.timer-card { border-top-color: var(--warning-color); }
+        .dash-card.score-card { border-top-color: var(--accent-color); }
+
+        .dash-title {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .dash-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-top: 5px;
+            color: var(--primary-color);
+        }
+
+        .level-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .level-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #cbd5e1;
+            background: var(--card-bg);
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .level-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 25px;
+        }
+
+        .exercise-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .actions-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-check { background-color: var(--accent-color); color: white; }
+        .btn-check:hover { background-color: #008f5a; }
+
+        .btn-gen { background-color: var(--secondary-color); color: white; }
+        .btn-gen:hover { background-color: var(--primary-color); }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.85rem;
+            color: #666;
+            border-top: 1px solid #e1e8ed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-text">
+            <h1>Universidad William Osler</h1>
+            <p>Pensamiento Matemático IV — Generador y Niveles Gamificados</p>
+        </div>
+        <div class="badge">
+            <p><strong>Catedrático:</strong> L.I. Luis Arturo López Vergara</p>
+            <p>Zihuatanejo, Gro. | Edición 2026</p>
+        </div>
+    </header>
+
+    <!-- DASHBOARD GAMIFICADO Y CRONÓMETRO -->
+    <div class="dashboard">
+        <div class="dash-card">
+            <div class="dash-title">Nivel Actual</div>
+            <div id="dash-level-text" class="dash-value">Nivel 1</div>
+        </div>
+        <div class="dash-card timer-card">
+            <div class="dash-title">Tiempo Transcurrido</div>
+            <div id="dash-timer" class="dash-value" style="color: var(--warning-color);">00:00</div>
+        </div>
+        <div class="dash-card score-card">
+            <div class="dash-title">Puntaje Total</div>
+            <div id="dash-score" class="dash-value" style="color: var(--accent-color);">0 PTS</div>
+        </div>
+    </div>
+
+    <!-- SELECTOR DE NIVEL DE DIFICULTAD -->
+    <div class="level-selector">
+        <button class="level-btn active" onclick="selectLevel(1)">Nivel 1: Principiante ($a, b, c$ y $\Delta$)</button>
+        <button class="level-btn" onclick="selectLevel(2)">Nivel 2: Intermedio (Soluciones Enteras)</button>
+        <button class="level-btn" onclick="selectLevel(3)">Nivel 3: Avanzado (Decimales / Cuaderno)</button>
+    </div>
+
+    <main class="main-card">
+        <div class="actions-row" style="margin-bottom: 20px;">
+            <button class="btn btn-gen" onclick="generateNewExercise()">🎲 Generar Ejercicio Nuevo (Práctica Ilimitada)</button>
+        </div>
+
+        <div class="exercise-box">
+            <h3 id="ex-title" style="color: var(--primary-color); margin-bottom: 10px;">Cargando Ejercicio...</h3>
+            <p id="ex-description" style="margin-bottom: 15px;">Aplica la fórmula general $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$ para resolver el problema contextualizado.</p>
+            <div id="ex-math" style="text-align: center; font-size: 1.4rem; font-weight: bold; margin: 15px 0;">
+                $$ax^2 + bx + c = 0$$
+            </div>
+        </div>
+
+        <!-- ÁREA DE INPUT DIPLOMADA SEGÚN EL NIVEL -->
+        <div id="input-container" class="input-grid">
+            <!-- Inputs dinámicos inyectados vía JavaScript -->
+        </div>
+
+        <div class="actions-row">
+            <button class="btn btn-check" onclick="checkAnswer()">🏆 Validar Respuesta y Obtener Puntos</button>
+        </div>
+
+        <div id="feedback-box" class="feedback"></div>
+    </main>
+
+    <footer>
+        <p>Universidad William Osler — Pensamiento Matemático IV — L.I. Luis Arturo López Vergara</p>
+    </footer>
+</div>
+
+<script>
+    let currentLevel = 1;
+    let score = 0;
+    let secondsElapsed = 0;
+    let timerInterval = null;
+    let currentData = {};
+
+    // Iniciar Cronómetro
+    function startTimer() {
+        clearInterval(timerInterval);
+        secondsElapsed = 0;
+        updateTimerDisplay();
+        timerInterval = setInterval(() => {
+            secondsElapsed++;
+            updateTimerDisplay();
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        const mins = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
+        const secs = (secondsElapsed % 60).toString().padStart(2, '0');
+        document.getElementById('dash-timer').innerText = `${mins}:${secs}`;
+    }
+
+    // Selector de Nivel
+    function selectLevel(lvl) {
+        currentLevel = lvl;
+        document.querySelectorAll('.level-btn').forEach((btn, idx) => {
+            btn.classList.toggle('active', idx + 1 === lvl);
+        });
+        document.getElementById('dash-level-text').innerText = `Nivel ${lvl}`;
+        generateNewExercise();
+    }
+
+    // Generador Aleatorio e Ilimitado con Soluciones Reales Positivas
+    function generateNewExercise() {
+        startTimer();
+        document.getElementById('feedback-box').style.display = 'none';
+
+        if (currentLevel === 1) {
+            // NIVEL 1: Identificación de a, b, c y Discriminante Delta
+            const a = -Math.floor(Math.random() * 5 + 1); // e.g. -1 a -5
+            const b = Math.floor(Math.random() * 8 + 2) * 2; // Par
+            const c = Math.floor(Math.random() * 10 + 1) * 5; 
+            const disc = (b * b) - (4 * a * c);
+
+            currentData = { a, b, c, disc };
+
+            document.getElementById('ex-title').innerText = "Nivel 1: Identificación de Coeficientes y Discriminante";
+            document.getElementById('ex-description').innerText = "Identifica los coeficientes a, b, c y calcula el discriminante Δ = b² - 4ac para conocer la naturaleza de la trayectoria.";
+            document.getElementById('ex-math').innerHTML = `$$${formatEq(a, b, c)}$$`;
+
+            document.getElementById('input-container').innerHTML = `
+                <div class="input-group"><label>a:</label><input type="number" id="inp-a" placeholder="a"></div>
+                <div class="input-group"><label>b:</label><input type="number" id="inp-b" placeholder="b"></div>
+                <div class="input-group"><label>c:</label><input type="number" id="inp-c" placeholder="c"></div>
+                <div class="input-group"><label>Discriminante (Δ):</label><input type="number" id="inp-disc" placeholder="Δ = b² - 4ac"></div>
+            `;
+        } 
+        else if (currentLevel === 2) {
+            // NIVEL 2: Raíces Enteras Exactas (fórmula construida desde raíces conocidas)
+            const r1 = -Math.floor(Math.random() * 3 + 1); // p.ej. -2
+            const r2 = Math.floor(Math.random() * 6 + 2);  // p.ej. 5 -> tiempo válido
+            const k = -1; // Para proyectiles parábola hacia abajo
+
+            // (x - r1)(x - r2) = x^2 - (r1+r2)x + r1*r2
+            // k*(x^2 - (r1+r2)x + r1*r2) -> a = k, b = -k*(r1+r2), c = k*r1*r2
+            const a = k;
+            const b = -k * (r1 + r2);
+            const c = k * (r1 * r2);
+            const validTime = r2;
+
+            currentData = { a, b, c, validTime };
+
+            document.getElementById('ex-title').innerText = "Nivel 2: Lanzamiento con Solución Entera Exacta";
+            document.getElementById('ex-description').innerText = "Determina el tiempo exacto t (en segundos enteros) en que el objeto regresa al nivel del suelo (h = 0).";
+            document.getElementById('ex-math').innerHTML = `$$h(t) = ${formatEq(a, b, c, 't')}$$`;
+
+            document.getElementById('input-container').innerHTML = `
+                <div class="input-group"><label>Tiempo válido t (segundos):</label><input type="number" id="inp-sol" placeholder="t = ?"></div>
+            `;
+        } 
+        else if (currentLevel === 3) {
+            // NIVEL 3: Casos Complejos con Decimales
+            const a = -5;
+            const b = Math.floor(Math.random() * 15 + 10); // e.g. 15 a 25
+            const c = Math.floor(Math.random() * 20 + 10); // e.g. 10 a 30
+            const disc = (b * b) - (4 * a * c);
+            const xVal = ((-b - Math.sqrt(disc)) / (2 * a)).toFixed(2);
+
+            currentData = { a, b, c, disc, xVal: parseFloat(xVal) };
+
+            document.getElementById('ex-title').innerText = "Nivel 3: Desafío Avanzado / Resolución en Cuaderno";
+            document.getElementById('ex-description').innerText = "Resuelve en tu cuaderno con precisión decimal. Ingresa el discriminante Δ y el tiempo final de vuelo t redondeado a 2 decimales.";
+            document.getElementById('ex-math').innerHTML = `$$h(t) = ${formatEq(a, b, c, 't')}$$`;
+
+            document.getElementById('input-container').innerHTML = `
+                <div class="input-group"><label>Discriminante (Δ):</label><input type="number" id="inp-disc" placeholder="Δ = ?"></div>
+                <div class="input-group"><label>Tiempo t (2 decimales):</label><input type="number" step="0.01" id="inp-sol" placeholder="t = ?"></div>
+            `;
+        }
+
+        if (window.MathJax) {
+            MathJax.typesetPromise([document.getElementById('ex-math')]);
+        }
+    }
+
+    // Formateador de Ecuación LaTeX
+    function formatEq(a, b, c, varName = 'x') {
+        let str = "";
+        if (a === 1) str += `${varName}^2`;
+        else if (a === -1) str += `-${varName}^2`;
+        else str += `${a}${varName}^2`;
+
+        if (b > 0) str += ` + ${b === 1 ? '' : b}${varName}`;
+        else if (b < 0) str += ` - ${Math.abs(b) === 1 ? '' : Math.abs(b)}${varName}`;
+
+        if (c > 0) str += ` + ${c}`;
+        else if (c < 0) str += ` - ${Math.abs(c)}`;
+
+        return str + " = 0";
+    }
+
+    // Validación de Respuestas y Bonificación Contrarreloj
+    function checkAnswer() {
+        const fb = document.getElementById('feedback-box');
+        let isCorrect = false;
+
+        if (currentLevel === 1) {
+            const inA = parseFloat(document.getElementById('inp-a').value);
+            const inB = parseFloat(document.getElementById('inp-b').value);
+            const inC = parseFloat(document.getElementById('inp-c').value);
+            const inDisc = parseFloat(document.getElementById('inp-disc').value);
+
+            if (inA === currentData.a && inB === currentData.b && inC === currentData.c && inDisc === currentData.disc) {
+                isCorrect = true;
+            }
+        } 
+        else if (currentLevel === 2) {
+            const inSol = parseFloat(document.getElementById('inp-sol').value);
+            if (inSol === currentData.validTime) {
+                isCorrect = true;
+            }
+        } 
+        else if (currentLevel === 3) {
+            const inDisc = parseFloat(document.getElementById('inp-disc').value);
+            const inSol = parseFloat(document.getElementById('inp-sol').value);
+            if (inDisc === currentData.disc && Math.abs(inSol - currentData.xVal) <= 0.05) {
+                isCorrect = true;
+            }
+        }
+
+        if (isCorrect) {
+            clearInterval(timerInterval);
+            let ptsGained = currentLevel * 10;
+            let bonusMsg = "";
+
+            // Bonificación por tiempo < 60s
+            if (secondsElapsed < 60) {
+                ptsGained += 5;
+                bonusMsg = " ⚡ ¡Bonus Contrarreloj de +5 PTS por resolver en menos de 60 segundos!";
+            }
+
+            score += ptsGained;
+            document.getElementById('dash-score').innerText = `${score} PTS`;
+
+            fb.className = "feedback correct";
+            fb.innerHTML = `🎉 ¡Respuesta Correcta! Sumas +${ptsGained} PTS.${bonusMsg}`;
+        } else {
+            fb.className = "feedback incorrect";
+            fb.innerHTML = "❌ Respuesta incorrecta. Revisa tus cálculos e inténtalo de nuevo o genera otro ejercicio.";
+        }
+    }
+
+    // Inicialización al cargar la página
+    window.onload = function() {
+        generateNewExercise();
+    };
+</script>
+
+</body>
+</html>
