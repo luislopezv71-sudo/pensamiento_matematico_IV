@@ -33,9 +33,9 @@ Este repositorio contiene la colección de **artefactos web interactivos** dise�
 .
 ├── index.html                   # Artefacto principal (3 Etapas: Teoría + Práctica + Reto Gamificado)
 ├── ejercicios_de_repaso_1.html  # Artefacto de Repaso Intensivo (Reto Gamificado directo)
+├── arena_gamificada.html        # Arena de Práctica Infinita (3 Niveles + Contrarreloj + Generador)
 └── README.md                    # Documentación principal del proyecto
 
----
 ```
 
 ### 💻 Contenido de los Artefactos
@@ -52,7 +52,13 @@ Este repositorio contiene la colección de **artefactos web interactivos** dise�
 * **Fase 1 (50 PTS):** 5 nuevos casos rápidos (caída de objetos, ventas locales, terrenos rectangulares, tiro con arco y costos).
 * **Fase 2 (50 PTS):** Desbloqueo de la guía de ejercicios complejos (*Trayectoria de Proyectil de Rescate* y *Economía de Transporte Turístico*) para comprobación en libreta.
 
----
+#### 3️⃣ `arena_gamificada.html` — Arena de Práctica Infinita
+* **Niveles de Dificultad:**
+  * 🟢 **Nivel 1 (Principiante):** Extraer $a, b, c$ e identificar el tipo de discriminante ($\Delta > 0, \Delta = 0, \Delta < 0$).
+  * 🟡 **Nivel 2 (Intermedio):** Resolver problemas con raíces enteras garantizadas aplicando la fórmula general.
+  * 🔴 **Nivel 3 (Avanzado / Cuaderno):** Resolver ecuaciones en libreta con raíces decimales y registrar la solución positiva admisible.
+* **Sistema Contrarreloj (60s):** Otorga un bono especial de **+5 PTS** si el alumno responde correctamente en menos de un minuto.
+* **Generador Aleatorio de Ejercicios:** Generación ilimitada de problemas con un solo clic.
 
 ### 🛠️ Tecnologías Utilizadas
 
