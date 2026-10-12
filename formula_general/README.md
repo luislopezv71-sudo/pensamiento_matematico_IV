@@ -31,9 +31,9 @@ Este repositorio contiene la colección de **artefactos web interactivos** dise�
 
 ```text
 .
-├── index.html                  # Artefacto principal (3 Etapas: Teoría + Práctica + Reto Gamificado)
+├── index.html                   # Artefacto principal (3 Etapas: Teoría + Práctica + Reto Gamificado)
 ├── ejercicios_de_repaso_1.html  # Artefacto de Repaso Intensivo (Reto Gamificado directo)
-└── README.md                   # Documentación principal del proyecto
+└── README.md                    # Documentación principal del proyecto
 
 ---
 ```
@@ -62,3 +62,10 @@ Este repositorio contiene la colección de **artefactos web interactivos** dise�
 | ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) | **CSS3** | Diseño responsivo utilizando CSS Custom Properties (Variables) y maquetación con Flexbox y CSS Grid. |
 | ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) | **JavaScript (Vanilla)** | Lógica de validación en tiempo real, cálculos algebraicos, simulador interactivo y sistema de gamificación con barra de progreso. |
 | ![MathJax](https://img.shields.io/badge/MathJax-005A9C?style=for-the-badge&logo=mathjax&logoColor=white) | **MathJax v3** | Motor SVG para la renderización nítida y profesional de fórmulas matemáticas en sintaxis LaTeX. |
+
+### 👤 Créditos y Autoría
+
+* **Catedrático / Desarrollador:** L.I. Luis Arturo López Vergara
+* **Institución:** Universidad William Osler (Bachillerato)
+* **Ubicación:** Zihuatanejo, Guerrero, México
+* **Edición:** 2026
