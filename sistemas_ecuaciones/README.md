@@ -32,3 +32,16 @@ Comprender, representar gráficamente, resolver y comprobar sistemas de dos ecua
 - En los ejercicios escritos se exige: definir variables, plantear ecuaciones, mostrar operaciones, comprobar e interpretar.
 - El gráfico usa escala fija; algunas intersecciones pueden quedar fuera de la ventana visible aunque se calculen correctamente.
 - No se modifica el contenido publicado de `formula_general/`.
+
+
+## Ampliación v1.1: Taller de métodos
+
+La lección principal incorpora un taller de resolución interactiva sobre los seis coeficientes del laboratorio, con procedimientos para sustitución, igualación y eliminación, y un ejercicio de decisión de método con cinco casos rotativos.
+
+- Las soluciones únicas se comprueban en ambas ecuaciones.
+- Los sistemas sin solución única se clasifican, sin inventar un par de valores.
+- Cuando no resulta práctico igualar directamente la misma incógnita, se explica por qué sustitución es más conveniente.
+- El repaso y el generador conservan la lógica y las claves de almacenamiento de v1.0, para preservar el progreso local.
+- Las expresiones en pantalla pueden estar redondeadas a cuatro decimales: el cuaderno debe registrar las operaciones exactas.
+
+**Publicación:** subir los cuatro archivos a la carpeta `sistemas_ecuaciones/` del repositorio, sin alterar `formula_general/`.
