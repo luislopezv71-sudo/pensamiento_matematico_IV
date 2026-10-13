@@ -67,13 +67,23 @@ pensamiento_matematico_IV/
 
 *La estructura anterior muestra los archivos principales del módulo actual; pueden existir carpetas de versiones anteriores para consulta o respaldo.*
 
-## Tecnologías
 
-- **HTML5 y CSS3:** estructura, diseño adaptable a computadora y celular.
-- **JavaScript:** simulación, validación de respuestas, generación de ejercicios y puntuación.
-- **Canvas y SVG:** representaciones gráficas y esquemas matemáticos.
-- **Almacenamiento local del navegador:** conservación de avances en los módulos que lo implementan. No equivale a un registro institucional de calificaciones.
-- **GitHub Pages:** publicación de los materiales en la web.
+## 🛠️ Tecnologías utilizadas
+
+Este proyecto integra tecnologías web para desarrollar recursos educativos interactivos, accesibles desde computadoras y dispositivos móviles.
+
+| Tecnología | Descripción y aplicación |
+| :--- | :--- |
+| ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) | Estructura y organización de los contenidos académicos. |
+| ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=white) | Diseño responsivo y adaptación a computadoras, tabletas y celulares. |
+| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) | Simulación matemática, validación de respuestas, generación de ejercicios y puntuación. |
+| ![Canvas](https://img.shields.io/badge/Canvas-FF6F00?style=for-the-badge&logo=html5&logoColor=white) | Representación dinámica de funciones y gráficas en el plano cartesiano. |
+| ![SVG](https://img.shields.io/badge/SVG-FFB13B?style=for-the-badge&logo=svg&logoColor=black) | Diagramas vectoriales y esquemas matemáticos de alta calidad. |
+| ![LocalStorage](https://img.shields.io/badge/LocalStorage-5C6BC0?style=for-the-badge&logo=googlechrome&logoColor=white) | Conservación de avances y puntuaciones en los módulos que lo implementan. |
+| ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=github&logoColor=white) | Publicación gratuita de los materiales educativos en la web. |
+
+> **Nota académica:** Los avances almacenados mediante `localStorage` permanecen en el navegador y dispositivo utilizados. No constituyen un registro institucional de calificaciones ni se sincronizan automáticamente entre dispositivos.
+
 
 Algunos recursos pueden requerir conexión a Internet para cargar bibliotecas externas de representación matemática.
 
