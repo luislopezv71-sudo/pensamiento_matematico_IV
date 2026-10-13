@@ -1,77 +1,112 @@
 <!--
-==========================================================================
-SYSTEM / APPLICATION METADATA BLOCK
-==========================================================================
-Project Name     : Artefactos Interactivos - Fórmula General y Ejercicios de Repaso
-Module           : Pensamiento Matemático IV
-Institution      : Universidad William Osler - Bachillerato (Zihuatanejo, Gro.)
-Author / Developer: L.I. Luis Arturo López Vergara
-Edition          : 2026
-Repository       : Formula-General-Pensamiento-Matematico-IV
-IA               : Gemini Plus - 	luisarturo.lopez.universidad.uwo@gmail.com
-==========================================================================
+Proyecto: Pensamiento Matemático IV — Fórmula General y Discriminante
+Institución: Universidad William Osler — Bachillerato, Zihuatanejo, Guerrero
+Autor y desarrollador: L.I. Luis Arturo López Vergara
+Edición: 2026
+Repositorio: https://github.com/luislopezv71-sudo/pensamiento_matematico_IV
+Ruta: formula_general/
 -->
 
-# Pensamiento Matemático IV — Ecuaciones Cuadráticas: Fórmula General y Ejercicios de Repaso 🧮
+# 🧮 Pensamiento Matemático IV — Fórmula General y Discriminante
 
-Este repositorio contiene la colección de **artefactos web interactivos** diseñados para el aprendizaje, ejercitación y gamificación de la **Fórmula General** aplicada a situaciones del mundo real, orientada a los alumnos de Bachillerato de la **Universidad William Osler** (Zihuatanejo, Guerrero).
+**Universidad William Osler · Bachillerato · Zihuatanejo, Guerrero · 2026**
 
----
+Módulo de aprendizaje interactivo para comprender, visualizar y resolver **ecuaciones cuadráticas**, interpretar el **discriminante** y aplicar la **fórmula general** en situaciones cercanas a los estudiantes. Integra explicación conceptual, gráficas, simulación, ejercicios autocorregibles, actividades en cuaderno y práctica gamificada.
 
-## 🎯 Objetivos Pedagógicos
+## 🚀 Acceso a los módulos
 
-1. **Definir y Comprender:** Identificar la estructura estándar de una ecuación cuadrática ($ax^2 + bx + c = 0$) y la fórmula general ($x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$).
-2. **Visualizar e Interactuar:** Experimentar en tiempo real con los coeficientes $a, b, c$ usando sliders dinámicos para comprender el impacto del discriminante ($\Delta = b^2 - 4ac$).
-3. **Practicar y Validar:** Resolver ejercicios contextualizados de física (lanzamiento de proyectiles, caída libre), economía (puntos de equilibrio, maximización de ingresos) y geometría.
-4. **Gamificar y Transferir:** Acumular puntos en un entorno interactivo por fases (Fase 1: 50 PTS en casos rápidos) para desbloquear retos complejos para resolución formal en libreta (Fase 2: 50 PTS).
+| Etapa | Recurso | Propósito | Abrir |
+|---|---|---|---|
+| 1. Comprender y visualizar | **Lección principal — Fórmula General v1.4** | Antecedentes, aplicaciones modernas, discriminante, parábola, simulador y actividades | [Abrir lección](https://luislopezv71-sudo.github.io/pensamiento_matematico_IV/formula_general/) |
+| 2. Practicar y demostrar | **Ejercicios de Repaso 1** | Cinco ejercicios de práctica y reto final con trabajo en cuaderno | [Abrir repaso](https://luislopezv71-sudo.github.io/pensamiento_matematico_IV/formula_general/ejercicios_repaso_1.html) |
+| 3. Reforzar y evaluar | **Niveles y Generador Gamificado** | Ejercicios nuevos por dificultad, validación y puntuación | [Abrir generador](https://luislopezv71-sudo.github.io/pensamiento_matematico_IV/formula_general/niveles_y_generador_gamificado.html) |
 
----
+## 🎯 Objetivos de aprendizaje
 
-## 📁 Estructura del Repositorio
+Al concluir la secuencia, el estudiante podrá:
+
+1. Reconocer la ecuación cuadrática en la forma **ax² + bx + c = 0**, con **a ≠ 0**, e identificar los coeficientes **a**, **b** y **c**.
+2. Aplicar la fórmula general **x = (−b ± √(b² − 4ac)) / (2a)** y comprobar sus soluciones.
+3. Calcular e interpretar el discriminante **Δ = b² − 4ac** y relacionarlo con las intersecciones de la parábola con el eje X.
+4. Explorar el efecto de los coeficientes en la gráfica, las raíces, el vértice y el eje de simetría.
+5. Resolver situaciones contextualizadas y documentar el procedimiento algebraico y gráfico en el cuaderno.
+6. Practicar de manera autónoma mediante ejercicios con retroalimentación inmediata.
+
+## 📚 Secuencia didáctica sugerida
+
+### 1. Lección principal: comprender y visualizar
+
+- **Motivación:** aplicaciones modernas de trayectorias en videojuegos y deportes.
+- **Conceptos:** ecuación cuadrática, coeficientes y fórmula general.
+- **Discriminante:** tres posibilidades y su interpretación gráfica:
+  - **Δ > 0:** dos raíces reales distintas.
+  - **Δ = 0:** una raíz real doble.
+  - **Δ < 0:** no hay raíces reales.
+- **Simulador:** modificación de coeficientes y observación de la parábola, raíces, vértice y tabla de valores.
+- **Trabajo escrito:** identificación de datos, sustitución, operaciones, comprobación y gráfica.
+
+### 2. Ejercicios de Repaso 1: practicar y demostrar
+
+- **Fase 1 — 50 puntos:** cinco ejercicios contextualizados con validación inmediata.
+- **Fase 2 — 50 puntos:** reto de mayor profundidad y comprobación de resultados obtenidos en el cuaderno.
+- El alumno debe **conservar las operaciones en su libreta**: la respuesta correcta en pantalla no sustituye la demostración del procedimiento.
+- El avance se guarda localmente en el navegador compatible; no equivale a una entrega automática al docente.
+
+### 3. Niveles y Generador Gamificado: reforzar y evaluar
+
+- **Nivel 1:** identificar coeficientes y calcular el discriminante.
+- **Nivel 2:** resolver ecuaciones con soluciones enteras y reconocer la respuesta válida en contexto.
+- **Nivel 3:** resolver ejercicios con resultados decimales, registrar el discriminante y justificar la solución en cuaderno.
+- **Generador:** permite obtener nuevos ejercicios para practicar.
+- **Puntuación:** cada ejercicio correcto suma puntos una sola vez; se utiliza un cronómetro informativo sin penalizar por tardar más.
+- **Progreso:** el puntaje se conserva en el navegador cuando el almacenamiento local está disponible.
+
+## ✍️ Evidencia académica para el cuaderno
+
+Para cada ejercicio que el docente solicite entregar, registrar:
+
+1. Enunciado y ecuación cuadrática.
+2. Identificación de **a**, **b** y **c**.
+3. Cálculo del discriminante **Δ** y explicación de su significado.
+4. Sustitución en la fórmula general y operaciones completas.
+5. Soluciones y comprobación en la ecuación original.
+6. Tabla de valores y gráfica de la parábola cuando corresponda.
+7. Interpretación del resultado en el contexto del ejercicio.
+
+**Criterio didáctico:** la plataforma apoya la exploración y la retroalimentación; el cuaderno permite valorar el razonamiento y la argumentación matemática.
+
+## 📁 Estructura de la carpeta `formula_general/`
 
 ```text
-.
-├── index.html                   # Artefacto principal (3 Etapas: Teoría + Práctica + Reto Gamificado)
-├── ejercicios_de_repaso_1.html  # Artefacto de Repaso Intensivo (Reto Gamificado directo)
-├── arena_gamificada.html        # Arena de Práctica Infinita (3 Niveles + Contrarreloj + Generador)
-└── README.md                    # Documentación principal del proyecto
-
+formula_general/
+├── index.html                             # Lección principal v1.4
+├── ejercicios_repaso_1.html               # Repaso gamificado y reto para cuaderno
+├── niveles_y_generador_gamificado.html    # Práctica aleatoria por niveles
+└── README.md                              # Documentación de este módulo
 ```
 
-### 💻 Contenido de los Artefactos
+Esta es la estructura principal de archivos vigente; no incluye carpetas históricas o versiones anteriores que puedan conservarse en el repositorio.
 
-#### 1️⃣ `index.html` — Artefacto Principal (3 Etapas)
-* **Etapa 1 (Definición y Teoría):** Presentación matemática clara renderizada con MathJax y simulador con deslizadores intermedios para $a$, $b$ y $c$.
-* **Etapa 2 (Ejercicios Prácticos):** Validación inmediata de coeficientes y solución física para casos contextualizados.
-* **Etapa 3 (Reto Gamificado):** Misión de 100 PTS dividida en:
-  * **Fase 1 (50 PTS):** 5 casos rápidos con retroalimentación instantánea.
-  * **Fase 2 (50 PTS):** Desbloqueo del *Caso Desafío: Diseño del Parque Acuático en Zihuatanejo* para entrega en libreta.
+## 🛠️ Tecnologías
 
-#### 2️⃣ `ejercicios_de_repaso_1.html` — Módulo de Repaso Intensivo
-* **Formato Directo:** Enfocado exclusivamente en el reto gamificado progresivo de repaso.
-* **Fase 1 (50 PTS):** 5 nuevos casos rápidos (caída de objetos, ventas locales, terrenos rectangulares, tiro con arco y costos).
-* **Fase 2 (50 PTS):** Desbloqueo de la guía de ejercicios complejos (*Trayectoria de Proyectil de Rescate* y *Economía de Transporte Turístico*) para comprobación en libreta.
+- **HTML5 y CSS3:** estructura, diseño adaptable a computadora y dispositivos móviles.
+- **JavaScript:** cálculos, validación, gráficas, generación de ejercicios y gamificación.
+- **Canvas y SVG:** representación visual de funciones y casos del discriminante en la lección principal.
+- **Almacenamiento local (`localStorage`):** persistencia del avance en los módulos que lo implementan. Los datos permanecen en el dispositivo y navegador usados; no se sincronizan entre estudiantes o equipos.
 
-#### 3️⃣ `arena_gamificada.html` — Arena de Práctica Infinita
-* **Niveles de Dificultad:**
-  * 🟢 **Nivel 1 (Principiante):** Extraer $a, b, c$ e identificar el tipo de discriminante ($\Delta > 0, \Delta = 0, \Delta < 0$).
-  * 🟡 **Nivel 2 (Intermedio):** Resolver problemas con raíces enteras garantizadas aplicando la fórmula general.
-  * 🔴 **Nivel 3 (Avanzado / Cuaderno):** Resolver ecuaciones en libreta con raíces decimales y registrar la solución positiva admisible.
-* **Sistema Contrarreloj (60s):** Otorga un bono especial de **+5 PTS** si el alumno responde correctamente en menos de un minuto.
-* **Generador Aleatorio de Ejercicios:** Generación ilimitada de problemas con un solo clic.
+## ▶️ Uso y publicación
 
-### 🛠️ Tecnologías Utilizadas
+1. Abrir los enlaces de la tabla **Acceso a los módulos** o el archivo `index.html` en un navegador moderno.
+2. Seguir el orden sugerido: **lección → repaso → generador**.
+3. Para publicar cambios, editar los archivos dentro de `formula_general/` en la rama publicada mediante GitHub Pages.
+4. Mantener los nombres de los archivos para conservar los enlaces existentes.
 
-| Identificador | Tecnología | Descripción / Uso en el Proyecto |
-| :---: | :--- | :--- |
-| ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) | **HTML5** | Estructura semántica para los artefactos interactivos de aprendizaje. |
-| ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) | **CSS3** | Diseño responsivo utilizando CSS Custom Properties (Variables) y maquetación con Flexbox y CSS Grid. |
-| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) | **JavaScript (Vanilla)** | Lógica de validación en tiempo real, cálculos algebraicos, simulador interactivo y sistema de gamificación con barra de progreso. |
-| ![MathJax](https://img.shields.io/badge/MathJax-005A9C?style=for-the-badge&logo=mathjax&logoColor=white) | **MathJax v3** | Motor SVG para la renderización nítida y profesional de fórmulas matemáticas en sintaxis LaTeX. |
+**Nota:** el sistema de puntos es una herramienta de práctica y motivación, no una plataforma de calificaciones con cuentas de estudiantes. El docente verifica las evidencias entregadas.
 
-### 👤 Créditos y Autoría
+## 👤 Créditos y autoría
 
-* **Catedrático / Desarrollador:** L.I. Luis Arturo López Vergara
-* **Institución:** Universidad William Osler (Bachillerato)
-* **Ubicación:** Zihuatanejo, Guerrero, México
-* **Edición:** 2026
+- **Catedrático y desarrollador:** L.I. Luis Arturo López Vergara.
+- **Institución:** Universidad William Osler, Bachillerato.
+- **Ubicación:** Zihuatanejo, Guerrero, México.
+- **Edición:** 2026.
+- **Repositorio:** [pensamiento_matematico_IV](https://github.com/luislopezv71-sudo/pensamiento_matematico_IV).
