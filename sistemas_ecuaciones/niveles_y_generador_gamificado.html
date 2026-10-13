@@ -86,5 +86,6 @@ $('new').addEventListener('click',()=>{if(!challenge)generate()});$('check').add
 $('startChallenge').addEventListener('click',()=>{challenge=1;chooseLevel(1);generate()});
 $('stopChallenge').addEventListener('click',()=>{challenge=0;chooseLevel(level);render()});
 chooseLevel(1);generate();
+window.addEventListener('pagehide',()=>clearInterval(timer));
 
 </script></body></html>

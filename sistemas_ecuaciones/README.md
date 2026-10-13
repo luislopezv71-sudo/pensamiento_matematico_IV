@@ -59,7 +59,7 @@ El laboratorio guiado identifica **indicios** de errores de signo (respuesta opu
 Los otros dos recursos (`ejercicios_repaso_1.html` y `niveles_y_generador_gamificado.html`) permanecen sin cambios y conservan sus claves de almacenamiento local.
 
 
-## Novedades v1.5 — Gamificación formativa
+## Novedades v1.6 — Gamificación formativa
 
 - El generador conserva las claves de almacenamiento anteriores (`pmiv-sistemas-generador-v1`) y migra sus campos `score` y `count` sin eliminarlos.
 - Incluye un desafío secuencial de tres niveles; la puntuación de cada ejercicio se concede una sola vez.
@@ -70,7 +70,7 @@ Los otros dos recursos (`ejercicios_repaso_1.html` y `niveles_y_generador_gamifi
 - La comprobación del procedimiento continúa realizándose en el cuaderno y por el docente.
 
 
-## Versión 1.5 · Reporte académico imprimible
+## Versión 1.6 · Reporte académico imprimible
 
 - Nuevo archivo `reporte_academico.html` enlazado desde los tres recursos.
 - Resume el repaso (0–100), puntuación acumulada del generador, aciertos, dominio por nivel e insignias.
@@ -78,3 +78,17 @@ Los otros dos recursos (`ejercicios_repaso_1.html` y `niveles_y_generador_gamifi
 - Ofrece impresión o PDF mediante el navegador y exportación TXT local.
 - Requiere usar el mismo origen y perfil de navegador; `localStorage` no es un sistema escolar de calificaciones.
 - Las métricas de desempeño por nivel se registran a partir de v1.4; la puntuación acumulada puede incluir versiones anteriores.
+
+
+## Mantenimiento v1.6 (12 de octubre de 2026)
+
+- Se corrigió la interpretación de campos vacíos en la vista de métodos algebraicos: ya no se interpretan como coeficientes cero.
+- Una entrada inválida limpia la gráfica anterior, para evitar mostrar un resultado correspondiente a otros parámetros.
+- Se ajustó la tolerancia numérica de la práctica guiada para resultados con dos decimales.
+- La exportación del reporte lee los datos locales al momento de exportar; la impresión actualiza previamente los indicadores.
+- El generador libera el temporizador al abandonar la página.
+- Se revisó la sintaxis JavaScript de todos los módulos y se verificaron las respuestas fijas del repaso mediante álgebra.
+
+**Limitación de las pruebas:** el navegador automatizado del entorno bloqueó la navegación local y localhost, por lo que no se completó una prueba de interacción real. Antes de liberar a estudiantes: probar en Chrome/Edge Android, escritorio, impresión PDF y la persistencia de los progresos.
+
+**Compatibilidad:** se mantienen las mismas claves de `localStorage` y los nombres de archivos; al subir la carpeta se preserva el progreso anterior en el mismo navegador y origen.
