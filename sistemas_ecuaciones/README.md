@@ -57,3 +57,14 @@ En la lección principal se agregó el **laboratorio guiado** con tres métodos:
 El laboratorio guiado identifica **indicios** de errores de signo (respuesta opuesta), cálculo numérico (respuesta próxima), despeje, eliminación, sustitución e igualación. Muestra una pista contextualizada en el segundo intento y conserva el avance por pasos. La clasificación de errores es orientativa: no reemplaza la revisión docente del razonamiento escrito. El conteo de errores pertenece a la sesión de práctica y no se envía a un servidor.
 
 Los otros dos recursos (`ejercicios_repaso_1.html` y `niveles_y_generador_gamificado.html`) permanecen sin cambios y conservan sus claves de almacenamiento local.
+
+
+## Novedades v1.4 — Gamificación formativa
+
+- El generador conserva las claves de almacenamiento anteriores (`pmiv-sistemas-generador-v1`) y migra sus campos `score` y `count` sin eliminarlos.
+- Incluye un desafío secuencial de tres niveles; la puntuación de cada ejercicio se concede una sola vez.
+- El dominio orientativo exige por nivel tres ejercicios resueltos y dos al primer intento.
+- Las insignias se calculan a partir del progreso real guardado y no equivalen a una calificación escolar.
+- Se registran intentos, aciertos y rondas completadas para la nueva versión. Los resultados previos no se imputan retroactivamente a métricas que no existían.
+- El cronómetro es informativo y no altera la calificación.
+- La comprobación del procedimiento continúa realizándose en el cuaderno y por el docente.
