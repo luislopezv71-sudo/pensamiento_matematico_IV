@@ -34,7 +34,7 @@ Comprender, representar gráficamente, resolver y comprobar sistemas de dos ecua
 - No se modifica el contenido publicado de `formula_general/`.
 
 
-## Ampliación v1.1: Taller de métodos
+## Ampliación v1.2: Taller de métodos
 
 La lección principal incorpora un taller de resolución interactiva sobre los seis coeficientes del laboratorio, con procedimientos para sustitución, igualación y eliminación, y un ejercicio de decisión de método con cinco casos rotativos.
 
@@ -45,3 +45,8 @@ La lección principal incorpora un taller de resolución interactiva sobre los s
 - Las expresiones en pantalla pueden estar redondeadas a cuatro decimales: el cuaderno debe registrar las operaciones exactas.
 
 **Publicación:** subir los cuatro archivos a la carpeta `sistemas_ecuaciones/` del repositorio, sin alterar `formula_general/`.
+
+
+## Versión 1.2 — Resolución activa paso a paso
+
+En la lección principal se agregó el **laboratorio guiado** con tres métodos: sustitución, igualación y eliminación. El estudiante debe introducir cada resultado de despeje, reducción, solución y comprobación antes de pasar al siguiente paso. Las actividades emplean los coeficientes del laboratorio gráfico y se reinician al cambiarlos mediante los controles. Incluye pistas y tolerancia de 0.01 en resultados numéricos. Para sistemas sin solución única se solicita seleccionar un sistema secante para la práctica guiada; la clasificación de los demás sistemas permanece disponible en el simulador. No se modifica la puntuación del repaso ni del generador.
