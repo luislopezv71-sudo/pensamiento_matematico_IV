@@ -59,7 +59,7 @@ El laboratorio guiado identifica **indicios** de errores de signo (respuesta opu
 Los otros dos recursos (`ejercicios_repaso_1.html` y `niveles_y_generador_gamificado.html`) permanecen sin cambios y conservan sus claves de almacenamiento local.
 
 
-## Novedades v1.4 — Gamificación formativa
+## Novedades v1.5 — Gamificación formativa
 
 - El generador conserva las claves de almacenamiento anteriores (`pmiv-sistemas-generador-v1`) y migra sus campos `score` y `count` sin eliminarlos.
 - Incluye un desafío secuencial de tres niveles; la puntuación de cada ejercicio se concede una sola vez.
@@ -68,3 +68,13 @@ Los otros dos recursos (`ejercicios_repaso_1.html` y `niveles_y_generador_gamifi
 - Se registran intentos, aciertos y rondas completadas para la nueva versión. Los resultados previos no se imputan retroactivamente a métricas que no existían.
 - El cronómetro es informativo y no altera la calificación.
 - La comprobación del procedimiento continúa realizándose en el cuaderno y por el docente.
+
+
+## Versión 1.5 · Reporte académico imprimible
+
+- Nuevo archivo `reporte_academico.html` enlazado desde los tres recursos.
+- Resume el repaso (0–100), puntuación acumulada del generador, aciertos, dominio por nivel e insignias.
+- Permite escribir nombre, grupo, fecha, reflexión y evidencias del cuaderno sin guardar datos personales automáticamente.
+- Ofrece impresión o PDF mediante el navegador y exportación TXT local.
+- Requiere usar el mismo origen y perfil de navegador; `localStorage` no es un sistema escolar de calificaciones.
+- Las métricas de desempeño por nivel se registran a partir de v1.4; la puntuación acumulada puede incluir versiones anteriores.
