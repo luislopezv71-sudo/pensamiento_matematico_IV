@@ -16,7 +16,7 @@
 <div class="math" id="quizSystem"></div><div class="row"><label>¿Qué método simplifica las operaciones?<select id="quizChoice"><option value="">Selecciona</option><option value="sub">Sustitución</option><option value="equal">Igualación</option><option value="elim">Eliminación</option></select></label><button type="button" id="quizCheck">Verificar elección</button><button type="button" id="quizNext">Otro caso</button></div>
 <div id="quizFeedback" class="notice" aria-live="polite">Selecciona un método y explica en tu cuaderno por qué lo elegiste.</div>
 </section>
-<section class="card" id="practicaGuiada"><h2>6. Resuelve tú: laboratorio guiado v1.2</h2>
+<section class="card" id="practicaGuiada"><h2>6. Resuelve tú: laboratorio guiado v1.3</h2>
 <p>Ahora te corresponde resolver las transformaciones. Selecciona un método, calcula cada respuesta en tu cuaderno y comprueba en la plataforma. <strong>El siguiente paso solo se habilita cuando respondes correctamente.</strong> Se utiliza el sistema vigente del laboratorio gráfico.</p>
 <div class="methodbar" role="group" aria-label="Método para práctica guiada"><button type="button" data-guide="sub">Sustitución</button><button type="button" data-guide="equal">Igualación</button><button type="button" data-guide="elim">Eliminación</button></div>
 <div id="guideContext" class="math" aria-live="polite">Selecciona un método para empezar.</div>
@@ -103,12 +103,12 @@ $('quizNext').addEventListener('click',()=>{quizIndex++;nextQuiz()});nextQuiz();
 // v1.2: actividad de resolución activa. No altera los eventos del laboratorio v1.1.
 (()=>{
 'use strict';
-const g=id=>document.getElementById(id);let currentMethod=null,steps=[],position=0,signature='';
+const g=id=>document.getElementById(id);let currentMethod=null,steps=[],position=0,signature='',stepAttempts=0,diagnostics={sign:0,arithmetic:0,concept:0};
 const names={sub:'Sustitución',equal:'Igualación',elim:'Eliminación'};
 const F=v=>Number(v.toFixed(5)).toString();
 function getValues(){return ['a1','b1','c1','a2','b2','c2'].map(id=>{const t=g(id).value.trim();return t===''?NaN:Number(t)});}
 function make(label,expected,detail,hint){return {label,expected,detail,hint};}
-function clear(){steps=[];position=0;g('guideFields').replaceChildren();g('guideTask').textContent='';g('guideProgress').textContent='';g('guideCheck').hidden=true;g('guideHint').hidden=true;g('guideFeedback').textContent='';}
+function clear(){steps=[];position=0;stepAttempts=0;diagnostics={sign:0,arithmetic:0,concept:0};g('guideFields').replaceChildren();g('guideTask').textContent='';g('guideProgress').textContent='';g('guideCheck').hidden=true;g('guideHint').hidden=true;g('guideFeedback').textContent='';}
 function setup(method){currentMethod=method;clear();document.querySelectorAll('[data-guide]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.guide===method)));
  const p=getValues();signature=JSON.stringify(p);if(!validSystem(p)){g('guideContext').textContent='Introduce dos ecuaciones válidas en el laboratorio gráfico.';return;}
  const [a,b,c,d,e,f]=p,r=solve(...p);g('guideContext').textContent=F(a)+'x + ('+F(b)+')y = '+F(c)+'   |   '+F(d)+'x + ('+F(e)+')y = '+F(f);
@@ -134,9 +134,22 @@ function setup(method){currentMethod=method;clear();document.querySelectorAll('[
  steps.push(make('Comprueba la primera ecuación: ¿cuánto vale a₁x + b₁y?',c,'Comprobación 1',F(a)+'·'+F(r.x)+' + '+F(b)+'·'+F(r.y)));
  steps.push(make('Comprueba la segunda ecuación: ¿cuánto vale a₂x + b₂y?',f,'Comprobación 2',F(d)+'·'+F(r.x)+' + '+F(e)+'·'+F(r.y)));
  render();}
-function render(){g('guideFeedback').textContent='';if(position>=steps.length){g('guideTask').textContent='¡Método completado! Resolviste y comprobaste las dos ecuaciones. Conserva el procedimiento en tu cuaderno.';g('guideFields').replaceChildren();g('guideProgress').textContent=names[currentMethod]+' · '+steps.length+'/'+steps.length+' pasos';g('guideCheck').hidden=true;g('guideHint').hidden=true;return;}
+function render(){stepAttempts=0;g('guideFeedback').className='feedback';g('guideFeedback').textContent='';if(position>=steps.length){g('guideTask').textContent='¡Método completado! Resolviste y comprobaste las dos ecuaciones. Conserva el procedimiento en tu cuaderno.';g('guideFeedback').className='feedback ok';g('guideFeedback').textContent='Registro de práctica (sin calificación): errores de signo '+diagnostics.sign+', errores de cálculo '+diagnostics.arithmetic+', errores de procedimiento '+diagnostics.concept+'.';g('guideFields').replaceChildren();g('guideProgress').textContent=names[currentMethod]+' · '+steps.length+'/'+steps.length+' pasos';g('guideCheck').hidden=true;g('guideHint').hidden=true;return;}
  const t=steps[position];g('guideProgress').textContent=names[currentMethod]+' · Paso '+(position+1)+' de '+steps.length;g('guideTask').textContent=t.label;g('guideFields').replaceChildren();const label=document.createElement('label');label.textContent=t.detail;const input=document.createElement('input');input.type='number';input.step='any';input.id='guideAnswer';input.placeholder='Tu resultado';label.append(input);g('guideFields').append(label);g('guideCheck').hidden=false;g('guideHint').hidden=false;input.focus();}
- g('guideCheck').addEventListener('click',()=>{if(!steps.length||position>=steps.length)return;if(JSON.stringify(getValues())!==signature){g('guideFeedback').textContent='Cambiaste los coeficientes. Reinicia la práctica para resolver el sistema actualizado.';return;}const input=g('guideAnswer'),num=input.value.trim()===''?NaN:Number(input.value),expected=steps[position].expected;if(Number.isFinite(num)&&Math.abs(num-expected)<=0.01){position++;render();}else{g('guideFeedback').className='feedback bad';g('guideFeedback').textContent='Todavía no coincide. Verifica signos, despejes y operaciones; puedes usar la pista.';}});
+
+ // v1.3: diagnóstico determinista, sin recurrir a servicios externos ni revelar la solución.
+ // La clasificación es orientativa, no una atribución definitiva del error del estudiante.
+ function diagnose(actual,expected,step){
+   if(!Number.isFinite(actual))return {type:'concept',message:'Ingresa un número válido antes de continuar. Si el valor es fraccionario, puedes escribirlo en decimal.'};
+   if(Math.abs(actual+expected)<=0.01 && Math.abs(expected)>0.01)return {type:'sign',message:'Posible error de signo: tu resultado tiene la magnitud correcta, pero el signo contrario. Comprueba los términos que cambian de miembro y los coeficientes negativos.'};
+   if(Math.abs(actual-expected)>0.01 && Math.abs(actual-expected)<=Math.max(2,Math.abs(expected)*0.12))return {type:'arithmetic',message:'Tu resultado está cerca del esperado. Revisa suma, resta, multiplicación y división, así como los decimales.'};
+   if(/coeficiente B|Despeja/.test(step.label))return {type:'concept',message:'Revisa el despeje: al pasar un término al otro lado cambia de signo y después divides entre el coeficiente de la incógnita.'};
+   if(/Multiplica|coeficiente resultante|término independiente/.test(step.label))return {type:'arithmetic',message:'Revisa los productos de cada ecuación antes de sumar. Multiplica todos sus términos, incluido el independiente.'};
+   if(/Comprueba/.test(step.label))return {type:'arithmetic',message:'Sustituye los dos valores calculados en la ecuación original. Respeta la prioridad de multiplicación antes de sumar.'};
+   if(/Sustituye|Iguala/.test(step.label))return {type:'concept',message:'Revisa que hayas sustituido la expresión completa, incluidos sus signos y paréntesis.'};
+   return {type:'arithmetic',message:'Verifica el procedimiento numérico paso a paso y comprueba los signos de cada operación.'};
+ }
+ g('guideCheck').addEventListener('click',()=>{if(!steps.length||position>=steps.length)return;if(JSON.stringify(getValues())!==signature){g('guideFeedback').textContent='Cambiaste los coeficientes. Reinicia la práctica para resolver el sistema actualizado.';return;}const input=g('guideAnswer'),num=input.value.trim()===''?NaN:Number(input.value),expected=steps[position].expected;if(Number.isFinite(num)&&Math.abs(num-expected)<=0.01){position++;render();}else{stepAttempts++;const d=diagnose(num,expected,steps[position]);diagnostics[d.type]++;g('guideFeedback').className='feedback bad';g('guideFeedback').textContent='Intento '+stepAttempts+'. '+d.message+(stepAttempts>=2?' Pista del paso: '+steps[position].hint:' Puedes abrir la pista cuando la necesites.');}});
  g('guideHint').addEventListener('click',()=>{if(steps[position]){g('guideFeedback').className='feedback note';g('guideFeedback').textContent='Pista: '+steps[position].hint;}});
  g('guideRestart').addEventListener('click',()=>{if(currentMethod)setup(currentMethod);else clear()});
  document.querySelectorAll('[data-guide]').forEach(b=>b.addEventListener('click',()=>setup(b.dataset.guide)));

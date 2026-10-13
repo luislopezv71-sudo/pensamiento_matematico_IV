@@ -50,3 +50,10 @@ La lección principal incorpora un taller de resolución interactiva sobre los s
 ## Versión 1.2 — Resolución activa paso a paso
 
 En la lección principal se agregó el **laboratorio guiado** con tres métodos: sustitución, igualación y eliminación. El estudiante debe introducir cada resultado de despeje, reducción, solución y comprobación antes de pasar al siguiente paso. Las actividades emplean los coeficientes del laboratorio gráfico y se reinician al cambiarlos mediante los controles. Incluye pistas y tolerancia de 0.01 en resultados numéricos. Para sistemas sin solución única se solicita seleccionar un sistema secante para la práctica guiada; la clasificación de los demás sistemas permanece disponible en el simulador. No se modifica la puntuación del repaso ni del generador.
+
+
+## Actualización v1.3 — Retroalimentación específica
+
+El laboratorio guiado identifica **indicios** de errores de signo (respuesta opuesta), cálculo numérico (respuesta próxima), despeje, eliminación, sustitución e igualación. Muestra una pista contextualizada en el segundo intento y conserva el avance por pasos. La clasificación de errores es orientativa: no reemplaza la revisión docente del razonamiento escrito. El conteo de errores pertenece a la sesión de práctica y no se envía a un servidor.
+
+Los otros dos recursos (`ejercicios_repaso_1.html` y `niveles_y_generador_gamificado.html`) permanecen sin cambios y conservan sus claves de almacenamiento local.
